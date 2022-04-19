@@ -78,6 +78,11 @@ export default {
       return classes;
     },
   },
+  watch: {
+    count(newCount) {
+      console.log(newCount);
+    },
+  },
   methods: {
     alert() {
       if (confirm("Оставить комментарий?")) {
