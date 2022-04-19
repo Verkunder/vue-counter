@@ -1,3 +1,63 @@
+<template>
+  <div class="container">
+    <div class="count">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <span
+            class="badge m-2"
+            :class="{
+              'badge-warning': count == 0,
+              'badge-primary': count > 0,
+              'badge-danger': count < 0,
+            }"
+          >
+            {{ count === 0 ? "Zero" : count }}
+          </span>
+          <h1 class="display-4">{{ count === 0 ? "Zero" : count }}</h1>
+        </div>
+      </div>
+      <div class="calculate">
+        <button class="btn btn-dark" @click="count++">Добавить</button>
+        <button class="btn btn-dark" @click="count--">Убавить</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <button class="btn btn-secondary btn-sm" @click="alert">Click</button>
+  </div>
+  <div class="container">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" @click="postFetch">
+        fetch
+      </button>
+      <button type="button" class="btn btn-success" @click="postAxios">
+        Axios
+      </button>
+      <button type="button" class="btn btn-danger" @click="postJquery">
+        jqueryAjax
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <form class="form-inline" @submit.prevent="onSubmit">
+      <div class="form-group mb-2">
+        <label for="inputPassword2" class="sr-only">ID запроса</label>
+        <input
+          class="form-control"
+          id="inputPassword2"
+          placeholder="ID"
+          v-model="id"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2" @click="load">
+        Сделать запрос!
+      </button>
+    </form>
+    <div class="card card-body" v-if="gallery == null">{{ exampleMS }}</div>
+    <div class="card card-body" v-else>{{ gallery }}</div>
+  </div>
+</template>
+
 <script>
 import axios from "axios";
 import $ from "jquery";
@@ -91,7 +151,7 @@ export default {
   created() {
     let WP = "TestWP";
     const RP = "TestRP";
-
+    /*
     {
       let test = { title: "Test", color: "red", margin: 1 };
       let { title, color, margin } = test;
@@ -101,90 +161,32 @@ export default {
       let WP = "testWP Local";
       console.log(WP);
       console.log(RP);
-    }
+    } */
     console.log(WP, " ", RP);
 
-    /* Оператор спред */
+    /* Оператор спред 
     const arr = [1, 2, 3, 4, 5];
     const data = [4, ...arr, 5];
-    console.log(data);
+    console.log(data); */
 
-    /* Оператор рест */
+    /* Оператор рест 
     const log = function (a, b, ...rest) {
       console.log(a, b, rest);
     };
 
-    log("Basic", "rest", "operator", "usage");
+    log("Basic", "rest", "operator", "usage"); */
 
-    /* Параметры по умолчанию */
+    /* Параметры по умолчанию 
     function multiply(a, b = 1) {
       return a * b;
     }
 
     multiply(5, 2); // 10
     multiply(5); // 5
-    multiply(5, undefined);
+    multiply(5, undefined);*/
   },
 };
 </script>
-
-<template>
-  <div class="container">
-    <div class="count">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <span
-            class="badge m-2"
-            :class="{
-              'badge-warning': count == 0,
-              'badge-primary': count > 0,
-            }"
-          >
-            {{ count === 0 ? "Zero" : count }}
-          </span>
-          <h1 class="display-4">{{ count === 0 ? "Zero" : count }}</h1>
-        </div>
-      </div>
-      <button class="btn btn-secondary btn-sm" @click="count++">
-        Increment
-      </button>
-    </div>
-  </div>
-  <div class="container">
-    <button class="btn btn-secondary btn-sm" @click="alert">Click</button>
-  </div>
-  <div class="container">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" @click="postFetch">
-        fetch
-      </button>
-      <button type="button" class="btn btn-success" @click="postAxios">
-        Axios
-      </button>
-      <button type="button" class="btn btn-danger" @click="postJquery">
-        jqueryAjax
-      </button>
-    </div>
-  </div>
-  <div class="container">
-    <form class="form-inline" @submit.prevent="onSubmit">
-      <div class="form-group mb-2">
-        <label for="inputPassword2" class="sr-only">ID запроса</label>
-        <input
-          class="form-control"
-          id="inputPassword2"
-          placeholder="ID"
-          v-model="id"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary mb-2" @click="load">
-        Сделать запрос!
-      </button>
-    </form>
-    <div class="card card-body" v-if="gallery == null">{{ exampleMS }}</div>
-    <div class="card card-body" v-else>{{ gallery }}</div>
-  </div>
-</template>
 
 <style>
 .container {
@@ -198,5 +200,14 @@ export default {
 .jumbotron {
   width: 740px;
   text-align: center;
+}
+.btn-dark {
+  margin: 0 5px;
+}
+.calculate {
+  width: 750px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 </style>
