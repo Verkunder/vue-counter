@@ -189,9 +189,13 @@ export default {
       return a * b;
     }
 
-    multiply(5, 2); // 10
-    multiply(5); // 5
-    multiply(5, undefined);*/
+    multiply(5, 2);
+    multiply(5);
+    multiply(5, undefined);
+    
+    Для автоматической отправки куков withCredentials: true
+    
+    */
   },
 };
 </script>
