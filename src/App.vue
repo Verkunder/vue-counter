@@ -3,14 +3,7 @@
     <div class="count">
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <span
-            class="badge m-2"
-            :class="{
-              'badge-warning': count == 0,
-              'badge-primary': count > 0,
-              'badge-danger': count < 0,
-            }"
-          >
+          <span :class="spanClass">
             {{ count === 0 ? "Zero" : count }}
           </span>
           <h1 class="display-4">{{ count === 0 ? "Zero" : count }}</h1>
@@ -69,6 +62,21 @@ export default {
       id: null,
       exampleMS: null,
     };
+  },
+  computed: {
+    spanClass() {
+      let classes = "badge m-2 badge-";
+      if (this.count == 0) {
+        classes += "warning";
+      }
+      if (this.count > 0) {
+        classes += "primary";
+      }
+      if (this.count < 0) {
+        classes += "danger";
+      }
+      return classes;
+    },
   },
   methods: {
     alert() {
@@ -164,19 +172,19 @@ export default {
     } */
     console.log(WP, " ", RP);
 
-    /* Оператор спред 
+    /* Оператор спред
     const arr = [1, 2, 3, 4, 5];
     const data = [4, ...arr, 5];
     console.log(data); */
 
-    /* Оператор рест 
+    /* Оператор рест
     const log = function (a, b, ...rest) {
       console.log(a, b, rest);
     };
 
     log("Basic", "rest", "operator", "usage"); */
 
-    /* Параметры по умолчанию 
+    /* Параметры по умолчанию
     function multiply(a, b = 1) {
       return a * b;
     }
