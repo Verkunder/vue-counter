@@ -76,69 +76,127 @@ export default {
     },
     async exampleLoad() {
       await axios
-        .get("https://boiling-refuge-66454.herokuapp.com/images")
+        .get("https://boiling-refuge-66454.herokuapp.com/images", {
+          headers: {
+            name: "value",
+            test: "test",
+          },
+        })
         .then((response) => (this.exampleMS = response.data));
     },
   },
   mounted() {
     this.exampleLoad();
   },
+  created() {
+    let WP = "TestWP";
+    const RP = "TestRP";
+
+    {
+      let test = { title: "Test", color: "red", margin: 1 };
+      let { title, color, margin } = test;
+      console.log(title);
+      console.log(color);
+      console.log(margin);
+      let WP = "testWP Local";
+      console.log(WP);
+      console.log(RP);
+    }
+    console.log(WP, " ", RP);
+
+    /* Оператор спред */
+    const arr = [1, 2, 3, 4, 5];
+    const data = [4, ...arr, 5];
+    console.log(data);
+
+    /* Оператор рест */
+    const log = function (a, b, ...rest) {
+      console.log(a, b, rest);
+    };
+
+    log("Basic", "rest", "operator", "usage");
+
+    /* Параметры по умолчанию */
+    function multiply(a, b = 1) {
+      return a * b;
+    }
+
+    multiply(5, 2); // 10
+    multiply(5); // 5
+    multiply(5, undefined);
+  },
 };
 </script>
 
 <template>
   <div class="container">
-    <span
-      class="badge m-2"
-      :class="{
-        'badge-warning': count == 0,
-        'badge-primary': count > 0,
-      }"
-    >
-      {{ count === 0 ? "Zero" : count }}
-    </span>
-    <button class="btn btn-secondary btn-sm" @click="count++">Increment</button>
-    <div class="container">
-      <div class="row">
-        <button class="btn btn-secondary btn-sm" @click="alert">Click</button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" @click="postFetch">
-          fetch
-        </button>
-        <button type="button" class="btn btn-success" @click="postAxios">
-          Axios
-        </button>
-        <button type="button" class="btn btn-danger" @click="postJquery">
-          jqueryAjax
-        </button>
-      </div>
-    </div>
-    <div class="container">
-      <form class="form-inline" @submit.prevent="onSubmit">
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">ID запроса</label>
-          <input
-            class="form-control"
-            id="inputPassword2"
-            placeholder="ID"
-            v-model="id"
-          />
+    <div class="count">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <span
+            class="badge m-2"
+            :class="{
+              'badge-warning': count == 0,
+              'badge-primary': count > 0,
+            }"
+          >
+            {{ count === 0 ? "Zero" : count }}
+          </span>
+          <h1 class="display-4">{{ count === 0 ? "Zero" : count }}</h1>
         </div>
-        <button type="submit" class="btn btn-primary mb-2" @click="load">
-          Сделать запрос!
-        </button>
-      </form>
-      <div class="card card-body" v-if="gallery == null">{{ exampleMS }}</div>
-      <div class="card card-body" v-else>{{ gallery }}</div>
+      </div>
+      <button class="btn btn-secondary btn-sm" @click="count++">
+        Increment
+      </button>
     </div>
+  </div>
+  <div class="container">
+    <button class="btn btn-secondary btn-sm" @click="alert">Click</button>
+  </div>
+  <div class="container">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" @click="postFetch">
+        fetch
+      </button>
+      <button type="button" class="btn btn-success" @click="postAxios">
+        Axios
+      </button>
+      <button type="button" class="btn btn-danger" @click="postJquery">
+        jqueryAjax
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <form class="form-inline" @submit.prevent="onSubmit">
+      <div class="form-group mb-2">
+        <label for="inputPassword2" class="sr-only">ID запроса</label>
+        <input
+          class="form-control"
+          id="inputPassword2"
+          placeholder="ID"
+          v-model="id"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2" @click="load">
+        Сделать запрос!
+      </button>
+    </form>
+    <div class="card card-body" v-if="gallery == null">{{ exampleMS }}</div>
+    <div class="card card-body" v-else>{{ gallery }}</div>
   </div>
 </template>
 
 <style>
 .container {
   padding: 15px 0;
+}
+.count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.jumbotron {
+  width: 740px;
+  text-align: center;
 }
 </style>
