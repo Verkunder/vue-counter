@@ -43,25 +43,24 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-.count {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.jumbotron {
-  max-width: 740px;
-  width: 100%;
-  text-align: center;
-}
-.btn-dark {
-  margin: 0 5px;
-}
-.calculate {
-  max-width: 750px;
-  width: 100%;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+<style lang="sass" scoped>
+.count
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.jumbotron
+  max-width: 740px
+  width: 100%
+  text-align: center
+
+.btn-dark
+  margin: 0 5px
+
+.calculate
+  max-width: 750px
+  width: 100%
+  align-items: center
+  display: flex
+  justify-content: center
 </style>

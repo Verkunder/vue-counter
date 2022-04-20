@@ -25,8 +25,7 @@ export default {
 };
 </script>
 
-<style>
-.container {
-  padding: 15px 0;
-}
+<style lang="sass">
+.container
+  padding: 15px 0
 </style>
