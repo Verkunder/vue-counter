@@ -52,13 +52,11 @@ export default {
       await axios
         .get(`https://boiling-refuge-66454.herokuapp.com/images/${this.id}`)
         .then(
-          (response) => (this.gallery = response.data),
-          (this.gallery = "По вашему запросу ничего не найдено!")
+          (response) => (this.gallery = response.data)
         )
         .catch(function (error) {
           alert("Ошибка! ", error);
-          this.gallery = "По вашему запросу ничего не найдено!";
-        });
+        }, (this.gallery = "По вашему запросу ничего не найдено!"));
     },
     async exampleLoad() {
       await axios
